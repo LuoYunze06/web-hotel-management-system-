@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanxin Grand Hotel - Admin Dashboard</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/behind.css">
+</head>
+<body data-hide-char-hint="true">
+    <div id="app">
+        <div id="dashboardView">
+            <header class="header">
+                <div class="header-content">
+                    <div class="logo">
+                        <img src="校徽.webp" alt="School Emblem">
+                        <h1>Nanxin Grand Hotel Management System</h1>
+                    </div>
+                    <div class="header-actions">
+                        <div class="user-info">
+                            <div class="user-avatar">A</div>
+                            <span>Admin</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-content">
+                <div class="page-header">
+                    <h1 class="page-title">Management Console</h1>
+                    <p class="page-subtitle">Welcome back, Administrator. Here's today's overview.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🏨</div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Today's Check-ins</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🍽️</div>
+                        <div class="stat-value">28</div>
+                        <div class="stat-label">Food & Beverage Bookings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-value">¥45,230</div>
+                        <div class="stat-label">Today's Revenue</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Staff Online</div>
+                    </div>
+                </div>
+
+                <div class="page-header">
+                    <h2 class="page-title">System Entries</h2>
+                    <p class="page-subtitle">Select the system you want to access</p>
+                </div>
+
+                <div class="systems-grid">
+                    <div class="system-card" onclick="navigateTo('../room&finance/html/status.html')">
+                        <span class="system-icon">🏨</span>
+                        <h3 class="system-title">Room Management System</h3>
+                        <p class="system-desc">Room booking, check-in/check-out, room status management</p>
+                        <span class="system-action">Enter →</span>
+                    </div>
+
+                    <div class="system-card" onclick="navigateTo('../room&finance/html/finance.html')">
+                        <span class="system-icon">💰</span>
+                        <h3 class="system-title">Finance Management System</h3>
+                        <p class="system-desc">Income/expense management, financial report inquiry</p>
+                        <span class="system-action">Enter →</span>
+                    </div>
+
+                    <div class="system-card" onclick="navigateTo('../entertainment&food/小组作业餐饮系统/小组作业html部分/admin.html')">
+                        <span class="system-icon">🍽️</span>
+                        <h3 class="system-title">Food & Beverage System</h3>
+                        <p class="system-desc">Menu management, order processing, dining reservations</p>
+                        <span class="system-action">Enter →</span>
+                    </div>
+
+                    <div class="system-card" onclick="navigateTo('../entertainment&food/小组作业娱乐系统/html/index.html')">
+                        <span class="system-icon">🎤</span>
+                        <h3 class="system-title">Entertainment Management System</h3>
+                        <p class="system-desc">KTV, SPA, Gym, Swimming Pool, Chess Room facility management</p>
+                        <span class="system-action">Enter →</span>
+                    </div>
+
+                    <div class="system-card" onclick="navigateTo('../Warehouse & Staff/dashboard.html')">
+                        <span class="system-icon">📦</span>
+                        <h3 class="system-title">Inventory Management System</h3>
+                        <p class="system-desc">Supplies management, inventory inquiry, purchase records</p>
+                        <span class="system-action">Enter →</span>
+                    </div>
+
+                    <div class="system-card" onclick="navigateTo('../Warehouse & Staff/staff.html')">
+                        <span class="system-icon">👥</span>
+                        <h3 class="system-title">Staff Management System</h3>
+                        <p class="system-desc">Staff information management, attendance records</p>
+                        <span class="system-action">Enter →</span>
+                    </div>
+
+                    <div class="system-card" onclick="navigateTo('guest-management.html')">
+                        <span class="system-icon">🧳</span>
+                        <h3 class="system-title">Guest Account Management</h3>
+                        <p class="system-desc">Guest information management, booking record inquiry</p>
+                        <span class="system-action">Enter →</span>
+                    </div>
+
+                    <div class="system-card" onclick="navigateTo('users.html')">
+                        <span class="system-icon">🔐</span>
+                        <h3 class="system-title">Staff Account Management</h3>
+                        <p class="system-desc">Staff account management, user information maintenance</p>
+                        <span class="system-action">Enter →</span>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div class="footer-content">
+                    © 2024 Nanxin Grand Hotel Management System · Version 1.0.0
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="js/behind.js"></script>
+<script src="../input-validation.js"></script>
+</body>
+</html>

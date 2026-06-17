@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Finance Record Search</title>
+    <link rel="stylesheet" href="../common.css">
+</head>
+<body class="finance-background">
+<header>
+    <div class="logo">Hotel Management System</div>
+    <div class="nav">
+        <a href="finance.html">Income & Expense Entry</a>
+        <a href="finance-query.html" class="active">Record Search</a>
+        <a href="finance-stat.html">Financial Statistics</a>
+        <a href="finance-refund.html">Refund Registration</a>
+        <a href="finance-cost.html">Daily Expenses</a>
+        <a href="finance-invoice.html">Invoice Management</a>
+        <a href="../../interface/behind.html">Home</a>
+    </div>
+</header>
+<div class="main">
+    <div class="panel">
+        <h2>Finance Record Search</h2>
+        <div class="form-group">
+            <label>Select Search Date</label>
+            <input type="date" id="searchDate">
+        </div>
+        <button onclick="searchFinance()">Search</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="searchBody">
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="../js/finance-query.js"></script>
+<script src="../../input-validation.js"></script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #0a2463;
+    --primary-light: #3e92cc;
+    --white: #ffffff;
+    --text-primary: #1a1a1a;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+header {
+    background-color: var(--primary);
+    padding: 16px 24px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+}
+
+.logo h1 {
+    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.navigator {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.navigator a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.navigator a:hover {
+    color: var(--white);
+}
+
+.guest-info {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.hero-section {
+    padding-top: 100px;
+    padding-bottom: 60px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    margin-bottom: 30px;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    padding-top: 60px;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    color: #666;
+}
+
+.booking-section {
+    padding: 60px 24px;
+    position: relative;
+    min-height: 300px;
+}
+
+.booking-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../背景3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.booking-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.booking-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 50px;
+    color: var(--text-primary);
+}
+
+.booking-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.booking-card {
+    width: 320px;
+    background-color: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    color: inherit;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.booking-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.booking-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.booking-card:hover img {
+    transform: scale(1.05);
+}
+
+.booking-info {
+    padding: 24px;
+}
+
+.booking-icon {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.booking-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.booking-desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.gallery-section {
+    padding: 60px 24px;
+    background-color: var(--white);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.gallery-container {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    align-items: stretch;
+    min-height: 400px;
+}
+
+.gallery-card {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    width: 160px;
+    height: 400px;
+}
+
+.gallery-card:hover {
+    width: 580px !important;
+    z-index: 10;
+}
+
+.gallery-card:hover + .gallery-card,
+.gallery-card:hover ~ .gallery-card {
+    width: 80px;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(10, 36, 99, 0.5) 0%, rgba(10, 36, 99, 0.8) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-card:hover .card-overlay {
+    background: linear-gradient(180deg, rgba(10, 36, 99, 0.4) 0%, rgba(10, 36, 99, 0.75) 100%);
+}
+
+.card-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 6px;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+.gallery-card:hover .card-label {
+    display: none;
+}
+
+.card-content {
+    padding: 40px;
+    text-align: center;
+    color: var(--white);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.gallery-card:hover .card-content {
+    display: flex;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 14px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 28px;
+}
+
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 10px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+    transition: all 0.3s;
+    align-self: center;
+}
+
+.card-link:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateX(5px);
+}
+
+.footer {
+    background-color: var(--primary);
+    padding: 40px 24px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-top: 40px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.modal-content p {
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.btn {
+    padding: 12px 32px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 0 8px;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: #081f4d;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #666;
+    border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+    background-color: #f5f5f5;
+}
+
+@media (max-width: 900px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .booking-card {
+        width: 280px;
+    }
+
+    .gallery-card {
+        width: 100px;
+        height: 320px;
+    }
+
+    .gallery-card:hover {
+        width: 300px !important;
+    }
+
+    .gallery-card:hover + .gallery-card,
+    .gallery-card:hover ~ .gallery-card {
+        width: 50px;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .logo h1 {
+        font-size: 1rem;
+    }
+
+    .navigator {
+        gap: 16px;
+    }
+
+    .navigator a {
+        font-size: 0.85rem;
+    }
+}

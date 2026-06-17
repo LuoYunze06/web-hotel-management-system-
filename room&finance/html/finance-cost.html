@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daily Expense Registration</title>
+    <link rel="stylesheet" href="../common.css">
+</head>
+<body>
+<header>
+    <div class="logo">Hotel Management System</div>
+    <div class="nav">
+        <a href="finance.html">Income & Expense Entry</a>
+        <a href="finance-query.html">Record Search</a>
+        <a href="finance-stat.html">Financial Statistics</a>
+        <a href="finance-refund.html">Refund Registration</a>
+        <a href="finance-cost.html" class="active">Daily Expenses</a>
+        <a href="finance-invoice.html">Invoice Management</a>
+        <a href="../../interface/behind.html">Home</a>
+    </div>
+</header>
+<div class="main">
+    <div class="panel">
+        <h2>Hotel Daily Expenses</h2>
+        <div class="form-group">
+            <label>Expense Item</label>
+            <select id="costType">
+                <option>Daily Supplies Purchase</option>
+                <option>Utility Cost</option>
+                <option>Repair Cost</option>
+                <option>Employee Allowance</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Expense Amount</label>
+            <input type="number" id="costMoney" placeholder="Required field" data-no-char-limit="true" required>
+        </div>
+        <div class="form-group">
+            <label>Notes</label>
+            <input type="text" id="costNote" placeholder="Optional (max 50 characters)">
+        </div>
+        <div class="form-group">
+            <label>Expense Date</label>
+            <input type="date" id="costDate">
+        </div>
+        <button onclick="addCost()">Add Expense</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Item</th>
+                    <th>Amount</th>
+                    <th>Notes</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="costBody">
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="../js/finance-cost.js"></script>
+<script src="../../input-validation.js"></script>
+</body>
+</html>

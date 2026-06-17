@@ -1,0 +1,257 @@
+/* ============================================
+   Warehouse pages
+   ============================================ */
+
+/* -------- Warning Tip -------- */
+.tip {
+    background: #fffaf0;
+    border: 1px solid #fbd38d;
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tip-icon {
+    font-size: 20px;
+    color: #dd6b20;
+}
+
+.tip-text {
+    flex: 1;
+    font-size: 14px;
+    color: #975a16;
+}
+
+.tip-text strong {
+    color: #c05621;
+    font-weight: 600;
+}
+
+.tip-btn {
+    background: transparent;
+    border: none;
+    color: #c05621;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* -------- Supplier Cards -------- */
+.sup-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.sup-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    padding: 20px;
+    transition: all 0.3s;
+}
+
+.sup-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.sup-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.sup-logo {
+    width: 48px;
+    height: 48px;
+    background: #3182ce;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.sup-info { flex: 1; }
+
+.sup-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 4px;
+}
+
+.sup-code {
+    font-size: 12px;
+    color: #a0aec0;
+}
+
+.sup-main { margin-bottom: 16px; }
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.row-label {
+    color: #a0aec0;
+    width: 60px;
+}
+
+.row-val { color: #4a5568; }
+
+.star {
+    color: #dd6b20;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.sup-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.sup-btns .btn {
+    flex: 1;
+    margin-right: 0;
+}
+
+/* -------- Workflow -------- */
+.flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.flow-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.flow-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    color: #a0aec0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.flow-item.done .flow-num {
+    background: #38a169;
+    color: white;
+}
+
+.flow-item.now .flow-num {
+    background: #3182ce;
+    color: white;
+}
+
+.flow-con {
+    display: flex;
+    flex-direction: column;
+}
+
+.flow-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #a0aec0;
+}
+
+.flow-item.done .flow-title,
+.flow-item.now .flow-title {
+    color: #2d3748;
+}
+
+.flow-arrow {
+    color: #cbd5e0;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+/* -------- Purchase Trend Chart -------- */
+.trend-chart-container {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.trend-chart-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 15px;
+}
+
+.trend-chart {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Grid lines */
+.trend-grid-line {
+    stroke: #edf2f7;
+    stroke-width: 1;
+}
+
+/* Axis labels */
+.trend-label {
+    fill: #a0aec0;
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+/* Line */
+.trend-line {
+    fill: none;
+    stroke: #3182ce;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Area fill */
+.trend-area {
+    fill: url(#gradient);
+    opacity: 1;
+}
+
+/* Data points */
+.trend-dot {
+    fill: #ffffff;
+    stroke: #3182ce;
+    stroke-width: 2;
+}
+
+/* Value labels */
+.trend-value {
+    fill: #2d3748;
+    font-size: 12px;
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+/* -------- Responsive Additions -------- */
+@media (max-width: 768px) {
+    .sup-list { grid-template-columns: 1fr; }
+    .flow { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .flow-arrow { transform: rotate(90deg); }
+}

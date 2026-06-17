@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Food & Beverage System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+        .nav {
+            background-color: #3182ce;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            text-align: right;
+        }
+        .nav a {
+            float: right;
+            color: #fff;
+            padding: 16px 20px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .nav a:hover {
+            background-color: #2c5282;
+        }
+        .nav a.active {
+            background-color: #2c5282;
+        }
+        .container {
+            margin-top: 60px;
+            height: calc(100vh - 60px);
+        }
+        #frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+      <a href="../../../interface/behind.html">Back to Home</a>
+        <a href="#" onclick="loadPage('pay.html',this)">Payment Management</a>
+        <a href="#" onclick="loadPage('order-manage.html',this)">Order Management</a>
+        <a href="#" onclick="loadPage('menu-manage.html',this)">Menu Management</a>
+        <a href="#" class="active" onclick="loadPage('evaluate.html',this)">Review Management</a>
+    </div>
+
+    <div class="container">
+        <iframe id="frame" src="evaluate.html"></iframe>
+    </div>
+
+    <script>
+        function loadPage(url, el){
+            event.preventDefault();
+            document.getElementById('frame').src = url;
+            document.querySelectorAll('.nav a').forEach(item=>item.classList.remove('active'));
+            el.classList.add('active');
+        }
+    </script>
+<script src="../../../input-validation.js"></script>
+</body>
+</html>

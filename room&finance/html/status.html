@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Status</title>
+    <link rel="stylesheet" href="../common.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Hotel Management System</div>
+        <div class="nav">
+            <a href="status.html" class="active">Room Status</a>
+            <a href="service.html">Room Service</a>
+            <a href="billing.html">Billing</a>
+            <a href="room-price.html">Room Pricing</a>
+            <a href="room-guest.html">Guest Information</a>
+            <a href="../../interface/behind.html">Home</a>
+        </div>
+    </header>
+    <div class="main">
+        <div class="panel">
+            <h2>Room Status</h2>
+            <table id="roomStatusTable">
+                <thead>
+                    <tr>
+                        <th>Room Number</th>
+                        <th>Floor</th>
+                        <th>Room Type</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="roomStatusBody"></tbody>
+            </table>
+            <div class="pagination" id="roomPagination"></div>
+        </div>
+    </div>
+    <script src="../js/room-status.js"></script>
+<script src="../../input-validation.js"></script>
+</body>
+</html>

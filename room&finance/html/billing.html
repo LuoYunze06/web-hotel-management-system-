@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Billing Payment</title>
+    <link rel="stylesheet" href="../common.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Hotel Management System</div>
+        <div class="nav">
+            <a href="status.html">Room Status</a>
+            <a href="service.html">Room Service</a>
+            <a href="billing.html" class="active">Billing</a>
+            <a href="room-price.html">Room Pricing</a>
+            <a href="room-guest.html">Guest Information</a>
+            <a href="../../interface/behind.html">Home</a>
+        </div>
+    </header>
+    <div class="main">
+        <div class="panel">
+            <h2>Billing Payment</h2>
+            <div class="form-group">
+                <label>Room Number</label>
+                <input type="text" id="billingRoomNo" placeholder="Required field" data-no-char-limit="true" required>
+            </div>
+            <div class="form-group">
+                <label>Payment Amount (CNY)</label>
+                <input type="number" id="paymentAmount" min="0" step="0.01" placeholder="Required field" data-no-char-limit="true" required>
+            </div>
+            <button class="btn-success" onclick="confirmPayment()">Confirm Payment</button>
+            <div id="billResult" style="margin-top: 20px; line-height: 1.8;"></div>
+            <table id="billTable" style="margin-top: 20px;">
+                <thead>
+                    <tr>
+                        <th>Payment ID</th>
+                        <th>Room Number</th>
+                        <th>Amount (CNY)</th>
+                        <th>Paid At</th>
+                    </tr>
+                </thead>
+                <tbody id="billBody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="../js/room-billing.js"></script>
+    <script src="../../input-validation.js"></script>
+</body>
+</html>

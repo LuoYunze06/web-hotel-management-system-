@@ -1,0 +1,508 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hotel Entertainment Management — Member Management</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        min-height: 100vh;
+        margin: 0;
+        padding: 30px;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)),
+          url("e7b6f6702ae80fc34bd43ebbe7c93fce~tplv-be4g95zd3a-image.jpeg")
+            center/cover no-repeat;
+      }
+      .container {
+        background: rgba(255, 255, 255, 0.18);
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 18px rgba(0, 0, 0, 0.18);
+        max-width: 1100px;
+        margin: 0 auto;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+      h2 {
+        text-align: center;
+        color: #00579a;
+        margin-bottom: 10px;
+      }
+      h3 {
+        color: #00579a;
+      }
+      .desc {
+        text-align: center;
+        color: #333;
+        margin-bottom: 25px;
+      }
+      .img-wrap {
+        display: none;
+      }
+      .img-wrap img {
+        width: 600px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #eee;
+      }
+      .form-wrap,
+      .bill,
+      .points-info {
+        width: 420px;
+        margin: 0 auto 30px;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        padding: 20px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.35);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      .bill {
+        margin: 20px auto;
+      }
+      .points-info {
+        text-align: center;
+        width: auto;
+        margin: 20px 0;
+        padding: 15px;
+      }
+      .points-info span {
+        color: #dc3545;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .form-group {
+        margin: 15px 0;
+      }
+      label {
+        display: block;
+        margin-bottom: 6px;
+        color: #333;
+      }
+      input:not([type="radio"]),
+      select,
+      textarea {
+        width: 280px;
+        padding: 7px;
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-sizing: border-box;
+      }
+      textarea {
+        width: 380px;
+        height: 120px;
+        resize: none;
+      }
+      .score {
+        margin: 10px 0;
+      }
+      .score label {
+        display: inline-block;
+        margin-right: 15px;
+        cursor: pointer;
+      }
+      .btn-box {
+        margin-top: 20px;
+        text-align: center;
+      }
+      button {
+        padding: 8px 16px;
+        background: #00579a;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #00427a;
+      }
+      .tips {
+        margin-top: 25px;
+        padding: 12px;
+        border: 1px dashed rgba(255, 255, 255, 0.65);
+        border-radius: 6px;
+        color: #333;
+        background: rgba(255, 255, 255, 0.35);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        background: rgba(255, 255, 255, 0.35);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      th,
+      td {
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        padding: 10px;
+        text-align: center;
+        color: #333;
+      }
+      th {
+        background: rgba(240, 247, 255, 0.65);
+        color: #00579a;
+      }
+      .status {
+        padding: 3px 8px;
+        border-radius: 4px;
+        color: white;
+      }
+      .status-free {
+        background-color: #28a745;
+      }
+      .status-used {
+        background-color: #dc3545;
+      }
+      .status-fix {
+        background-color: #ffc107;
+      }
+      .star {
+        color: #ffc107;
+        font-size: 16px;
+      }
+      .bill h4 {
+        text-align: center;
+        margin: 0 0 15px;
+        color: #00579a;
+      }
+      .bill-item {
+        display: flex;
+        justify-content: space-between;
+        margin: 8px 0;
+      }
+      .bill-total {
+        font-weight: bold;
+        color: #dc3545;
+        border-top: 1px solid rgba(255, 255, 255, 0.55);
+        padding-top: 10px;
+        margin-top: 10px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        --page-bg: url("e7b6f6702ae80fc34bd43ebbe7c93fce~tplv-be4g95zd3a-image.jpeg");
+        color: #243044;
+        overflow-x: hidden;
+        background: #edf4f7;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: -18px;
+        z-index: -2;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.42),
+            rgba(201, 228, 236, 0.24)
+          ),
+          var(--page-bg) center/cover no-repeat;
+        filter: blur(8px) saturate(1.08);
+        transform: scale(1.04);
+        will-change: transform;
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          radial-gradient(
+            circle at 28% 12%,
+            rgba(255, 255, 255, 0.65),
+            transparent 28%
+          ),
+          linear-gradient(rgba(20, 45, 68, 0.16), rgba(255, 255, 255, 0.42));
+        pointer-events: none;
+      }
+      .container {
+        border: 1px solid rgba(255, 255, 255, 0.58);
+        box-shadow: 0 18px 44px rgba(18, 47, 70, 0.18);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        animation: contentFade 0.7s ease both;
+      }
+      h3 {
+        position: relative;
+        display: table;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -6px;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #c8912f, #ffe6a8);
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.28s ease;
+      }
+      h3:hover::after {
+        transform: scaleX(1);
+      }
+      .form-wrap,
+      .bill,
+      .points-info,
+      .tips,
+      table {
+        transition:
+          transform 0.32s ease,
+          box-shadow 0.32s ease,
+          border-color 0.32s ease;
+      }
+      .form-wrap:hover,
+      .bill:hover,
+      .points-info:hover,
+      .tips:hover,
+      table:hover {
+        transform: translateY(-6px);
+        border-color: rgba(255, 218, 130, 0.9);
+        box-shadow:
+          0 18px 38px rgba(23, 48, 68, 0.18),
+          0 0 24px rgba(218, 166, 63, 0.48);
+      }
+      input:not([type="radio"]),
+      select,
+      textarea {
+        width: 100%;
+        padding: 9px 10px;
+        outline: none;
+        transition:
+          border-color 0.25s ease,
+          box-shadow 0.25s ease,
+          background 0.25s ease;
+      }
+      input:not([type="radio"]):focus,
+      select:focus,
+      textarea:focus {
+        border-color: rgba(200, 145, 47, 0.9);
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 0 0 0 3px rgba(255, 219, 142, 0.36);
+      }
+      textarea {
+        width: 100%;
+      }
+      .btn-box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      button {
+        position: relative;
+        overflow: hidden;
+        min-height: 38px;
+        margin: 0;
+        background: linear-gradient(135deg, #00579a, #0c75bd);
+        box-shadow: 0 8px 16px rgba(0, 87, 154, 0.22);
+        transition:
+          transform 0.24s ease,
+          box-shadow 0.24s ease;
+      }
+      button::before {
+        content: "";
+        position: absolute;
+        top: -45%;
+        left: -80%;
+        width: 42%;
+        height: 190%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.72),
+          transparent
+        );
+        transform: rotate(24deg);
+        transition: left 0.6s ease;
+      }
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 22px rgba(0, 87, 154, 0.3);
+      }
+      button:hover::before {
+        left: 130%;
+      }
+      table tr {
+        opacity: 0;
+        transform: translateY(14px);
+        animation: orderFadeUp 0.58s ease forwards;
+      }
+      table tr:nth-child(2) {
+        animation-delay: 0.08s;
+      }
+      table tr:nth-child(3) {
+        animation-delay: 0.16s;
+      }
+      table tr:nth-child(4) {
+        animation-delay: 0.24s;
+      }
+      table tr:nth-child(5) {
+        animation-delay: 0.32s;
+      }
+      table tr:nth-child(6) {
+        animation-delay: 0.4s;
+      }
+      @keyframes contentFade {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes orderFadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+      @media (max-width: 760px) {
+        body {
+          padding: 18px 14px;
+        }
+        .container {
+          padding: 18px;
+        }
+        .form-wrap,
+        .bill,
+        .points-info {
+          width: 100%;
+        }
+        .btn-box button {
+          flex: 1 1 130px;
+        }
+        table {
+          display: block;
+          width: 100%;
+          overflow-x: auto;
+          white-space: nowrap;
+        }
+        th,
+        td {
+          padding: 9px 10px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="../../shared-ui.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Hotel Entertainment Management — Member Management</h2>
+      <p class="desc">
+        Manage member information, levels, and consumption records; provide exclusive services to enhance member loyalty
+      </p>
+
+      <div class="img-wrap">
+        <img
+          src="e7b6f6702ae80fc34bd43ebbe7c93fce~tplv-be4g95zd3a-image.jpeg"
+          alt="Member Management"
+        />
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-group">
+          <label>Member Name</label>
+          <input type="text" id="memberName" placeholder="Required field (max 50 characters)" required />
+        </div>
+        <div class="form-group">
+          <label>Member Phone</label>
+          <input type="text" id="memberPhone" placeholder="Required field" data-no-char-limit="true" required />
+        </div>
+        <div class="form-group">
+          <label>Member Level</label>
+          <select id="memberLevel">
+            <option>Regular Member</option>
+            <option>Silver Member</option>
+            <option>Gold Member</option>
+          </select>
+        </div>
+
+        <div class="btn-box">
+          <button id="addMember">Add Member</button>
+          <button id="showMember">Member List</button>
+          <button id="showRecord">Consumption Records</button>
+        </div>
+      </div>
+
+      <h3 style="text-align: center; margin: 30px 0 15px; color: #00579a">
+        Member List
+      </h3>
+      <table>
+        <tr>
+          <th>Member Name</th>
+          <th>Member Phone</th>
+          <th>Member Level</th>
+          <th>Total Consumption (Yuan)</th>
+          <th>Action</th>
+        </tr>
+        <tr>
+          <td>Han Wentao</td>
+          <td>138****1234</td>
+          <td><span class="level level-gold">Gold Member</span></td>
+          <td>2860</td>
+          <td>
+            <button style="padding: 4px 8px; font-size: 12px">Details</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Luo Yunze</td>
+          <td>139****5678</td>
+          <td><span class="level level-silver">Silver Member</span></td>
+          <td>1580</td>
+          <td>
+            <button style="padding: 4px 8px; font-size: 12px">Details</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Zhu Hengan</td>
+          <td>137****9012</td>
+          <td><span class="level level-normal">Regular Member</span></td>
+          <td>680</td>
+          <td>
+            <button style="padding: 4px 8px; font-size: 12px">Details</button>
+          </td>
+        </tr>
+      </table>
+      <div class="tips">
+        <strong>Tips:</strong>
+        <p>1. When adding a member, please enter the phone number accurately to receive membership benefit notifications</p>
+        <p>2. Member level is automatically upgraded based on cumulative consumption; Gold Members enjoy priority booking and exclusive discounts</p>
+        <p>3. Click "Details" to view complete consumption records, points, and benefits</p>
+      </div>
+    </div>
+    <script src="../js/member.js"></script>
+<script src="../../../input-validation.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dining Booking - Nanxin Grand Hotel</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/food-booking.css">
+</head>
+<body data-hide-char-hint="true">
+    <header class="headdecorate">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="校徽.webp" alt="School Emblem" class="school-logo">
+                <h1>Nanxin Grand Hotel Dining Booking</h1>
+            </div>
+            <nav class="navigator">
+                <a href="before.html" class="scene">Guest Portal</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <h3>Reminder</h3>
+                <p>Please login before making reservations!</p>
+                <button class="btn btn-primary" onclick="goLogin()">Go to Login</button>
+                <button class="btn btn-secondary" onclick="goBack()">Back</button>
+            </div>
+        </div>
+        <section class="booking-section" id="bookingContent" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Dining Booking</h2>
+                <p class="section-subtitle">Please fill in booking information</p>
+                
+                <form id="bookingForm" class="booking-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Guest Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Required field">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="Required field">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="people">Number of Guests</label>
+                            <select id="people" name="people" required>
+                                <option value="">Please select</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Booking Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="time">Booking Time</label>
+                            <select id="time" name="time" required>
+                                <option value="">Please select</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="17:30">17:30</option>
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:30">19:30</option>
+                                <option value="20:00">20:00</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="table">Table Type</label>
+                            <select id="table" name="table" required>
+                                <option value="">Please select</option>
+                                <option value="small">Small (2-4 pax)</option>
+                                <option value="medium">Medium (4-6 pax)</option>
+                                <option value="large">Large (6-10 pax)</option>
+                                <option value="vip">VIP Room</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="remark">Remarks</label>
+                        <textarea id="remark" name="remark" rows="4" maxlength="100" data-max-chars="100" data-hide-char-hint="false" placeholder="Optional (max 100 characters)"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                        <a href="before.html" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+                
+                <div id="successModal" class="modal">
+                    <div class="modal-content">
+                        <h3>Booking Successful!</h3>
+                        <p>Thank you for your booking, we will confirm shortly.</p>
+                        <p>Booking details have been sent to your phone.</p>
+                        <button class="btn btn-primary" onclick="closeModal()">OK</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">© 2024 Nanxin Grand Hotel Management System</div>
+    </footer>
+
+    <script src="js/food-booking.js"></script>
+<script src="../input-validation.js"></script>
+</body>
+</html>

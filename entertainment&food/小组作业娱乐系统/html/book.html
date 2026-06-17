@@ -1,0 +1,444 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hotel Entertainment Booking</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        min-height: 100vh;
+        margin: 0;
+        padding: 30px;
+        color: #243044;
+        overflow-x: hidden;
+        background: #edf4f7;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: -18px;
+        z-index: -2;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.42),
+            rgba(201, 228, 236, 0.24)
+          ),
+          url("af4e4acdc38e111d8f016b03ca2f573a.jpg") center/cover no-repeat;
+        filter: blur(8px) saturate(1.08);
+        transform: scale(1.04);
+        will-change: transform;
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          radial-gradient(
+            circle at 28% 12%,
+            rgba(255, 255, 255, 0.65),
+            transparent 28%
+          ),
+          linear-gradient(rgba(20, 45, 68, 0.16), rgba(255, 255, 255, 0.42));
+        pointer-events: none;
+      }
+      .container {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.58);
+        border-radius: 10px;
+        box-shadow: 0 18px 44px rgba(18, 47, 70, 0.18);
+        max-width: 1100px;
+        margin: 0 auto;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        animation: contentFade 0.7s ease both;
+      }
+      h2 {
+        text-align: center;
+        color: #00579a;
+        margin: 0 0 10px;
+      }
+      .desc {
+        text-align: center;
+        color: #334155;
+        margin-bottom: 25px;
+      }
+      .img-box {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+        gap: 18px;
+        justify-content: center;
+        margin: 20px 0 30px;
+      }
+      .img-item {
+        position: relative;
+        min-height: 160px;
+        border: 1px solid rgba(255, 255, 255, 0.58);
+        border-radius: 8px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.36);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        transform: translateY(0);
+        transition:
+          transform 0.32s ease,
+          box-shadow 0.32s ease,
+          border-color 0.32s ease;
+      }
+      .img-item::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        border-radius: inherit;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 232, 169, 0.58),
+          transparent 42%
+        );
+        opacity: 0;
+        transition: opacity 0.32s ease;
+        pointer-events: none;
+      }
+      .img-item:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 218, 130, 0.9);
+        box-shadow:
+          0 18px 38px rgba(23, 48, 68, 0.18),
+          0 0 24px rgba(218, 166, 63, 0.48);
+      }
+      .img-item:hover::before {
+        opacity: 1;
+      }
+      .img-item img {
+        width: 100%;
+        height: 115px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.45s ease;
+      }
+      .img-item:hover img {
+        transform: scale(1.06);
+      }
+      .img-item p {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        margin: 8px 0;
+        color: #243044;
+        font-weight: 700;
+      }
+      .form-wrap {
+        width: min(100%, 460px);
+        margin: 0 auto;
+        border: 1px solid rgba(255, 255, 255, 0.58);
+        padding: 20px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.38);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      .form-group {
+        margin: 15px 0;
+      }
+      label {
+        display: block;
+        margin-bottom: 6px;
+        color: #243044;
+        font-weight: 600;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 9px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.62);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        outline: none;
+        transition:
+          border-color 0.25s ease,
+          box-shadow 0.25s ease,
+          background 0.25s ease;
+      }
+      input:focus,
+      select:focus {
+        border-color: rgba(200, 145, 47, 0.9);
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 0 0 0 3px rgba(255, 219, 142, 0.36);
+      }
+      .btn-box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      button {
+        position: relative;
+        overflow: hidden;
+        min-height: 38px;
+        padding: 8px 16px;
+        background: linear-gradient(135deg, #00579a, #0c75bd);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        box-shadow: 0 8px 16px rgba(0, 87, 154, 0.22);
+        transition:
+          transform 0.24s ease,
+          box-shadow 0.24s ease,
+          background 0.24s ease;
+      }
+      button::before {
+        content: "";
+        position: absolute;
+        top: -45%;
+        left: -80%;
+        width: 42%;
+        height: 190%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.72),
+          transparent
+        );
+        transform: rotate(24deg);
+        transition: left 0.6s ease;
+      }
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 22px rgba(0, 87, 154, 0.3);
+      }
+      button:hover::before {
+        left: 130%;
+      }
+      .tips,
+      .order-panel {
+        margin-top: 25px;
+        padding: 14px;
+        border: 1px dashed rgba(255, 255, 255, 0.68);
+        border-radius: 6px;
+        color: #243044;
+        background: rgba(255, 255, 255, 0.36);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      .tips p {
+        margin: 8px 0 0;
+      }
+      .order-panel h3 {
+        margin: 0 0 12px;
+        color: #00579a;
+        font-size: 18px;
+      }
+      .order-list {
+        display: grid;
+        gap: 10px;
+      }
+      .order-item {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        gap: 12px;
+        align-items: center;
+        min-height: 54px;
+        padding: 12px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.58);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.44);
+        box-shadow: 0 8px 20px rgba(20, 44, 65, 0.1);
+        opacity: 0;
+        transform: translateY(14px);
+        animation: orderFadeUp 0.58s ease forwards;
+      }
+      .order-item:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+      .order-item:nth-child(3) {
+        animation-delay: 0.24s;
+      }
+      .order-item strong {
+        color: #1f2f44;
+      }
+      .order-item span {
+        color: #475569;
+        font-size: 14px;
+      }
+      .status {
+        color: #8a5b0a;
+        font-weight: 700;
+        background: rgba(255, 223, 156, 0.55);
+        padding: 5px 10px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+      @keyframes contentFade {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes orderFadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+      @media (max-width: 760px) {
+        body {
+          padding: 18px 14px;
+        }
+        .container {
+          padding: 18px;
+        }
+        .img-box {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
+        }
+        .btn-box button {
+          flex: 1 1 130px;
+        }
+        .order-item {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+        .status {
+          width: max-content;
+        }
+      }
+      @media (max-width: 420px) {
+        .img-box {
+          grid-template-columns: 1fr;
+        }
+        h2 {
+          font-size: 22px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="../../shared-ui.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Hotel Entertainment Management — Entertainment Booking</h2>
+      <p class="desc">
+        Supports online booking for KTV / SPA / Gym / Swimming Pool / Chess Room with multiple time slots
+      </p>
+      <div class="img-box">
+        <div class="img-item">
+          <img
+            src="6449acc92bb73c65e5d253283f8f4d5c~tplv-a9rns2rl98-pc_smart_face_crop-v1_266_200.jpg"
+            alt="KTV"
+          />
+          <p>Luxury KTV</p>
+        </div>
+        <div class="img-item">
+          <img
+            src="040abbe68c53805d917d4a1b5aeb850f~tplv-a9rns2rl98-pc_smart_face_crop-v1_512_384.jpg"
+            alt="SPA"
+          />
+          <p>SPA Wellness</p>
+        </div>
+        <div class="img-item">
+          <img
+            src="e5de606f94d622cbee39290cc9a35429~tplv-a9rns2rl98-pc_smart_face_crop-v1_512_384.jpg"
+            alt="Swimming Pool"
+          />
+          <p>Heated Pool</p>
+        </div>
+        <div class="img-item">
+          <img
+            src="f3a69858846388fcb130be40f1ed524e~tplv-a9rns2rl98-pc_smart_face_crop-v1_426_320.jpg"
+            alt="Gym"
+          />
+          <p>Professional Gym</p>
+        </div>
+        <div class="img-item">
+          <img
+            src="7a8f3e4f2930e4526ebd7df0d62dfbec~tplv-a9rns2rl98-pc_smart_face_crop-v1_266_200.jpg"
+            alt="Chess Room"
+          />
+          <p>Leisure Chess Room</p>
+        </div>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-group">
+          <label>Booker Name</label>
+          <input type="text" id="username" placeholder="Required field" data-no-char-limit="true" required />
+        </div>
+        <div class="form-group">
+          <label>Select Entertainment Item</label>
+          <select id="itemType">
+            <option>KTV</option>
+            <option>SPA</option>
+            <option>Gym</option>
+            <option>Swimming Pool</option>
+            <option>Chess Room</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Select Booking Time</label>
+          <input type="datetime-local" id="bookTime" />
+        </div>
+
+        <div class="btn-box">
+          <button id="submitBook">Submit Booking</button>
+          <button id="queryBook">Booking Inquiry</button>
+          <button id="cancelBook">Cancel Booking</button>
+        </div>
+      </div>
+      <div class="tips">
+        <strong>Tips:</strong>
+        <p>1. The system automatically detects time conflicts to avoid duplicate bookings</p>
+        <p>2. Multiple payment methods are supported, including pay on arrival and online prepayment</p>
+        <p>3. To modify the time, please cancel the original order first and then rebook</p>
+      </div>
+      <div class="order-panel">
+        <h3>Today's Orders</h3>
+        <div class="order-list">
+          <div class="order-item">
+            <strong>Luxury KTV · Room 302</strong>
+            <span>19:00 - 21:00</span>
+            <span class="status">Confirmed</span>
+          </div>
+          <div class="order-item">
+            <strong>SPA Wellness · Couple Treatment</strong>
+            <span>20:30 - 21:30</span>
+            <span class="status">Pending Arrival</span>
+          </div>
+          <div class="order-item">
+            <strong>Heated Pool · Family Ticket</strong>
+            <span>18:00 - 20:00</span>
+            <span class="status">Prepaid</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/book.js"></script>
+<script src="../../../input-validation.js"></script>
+</body>
+</html>

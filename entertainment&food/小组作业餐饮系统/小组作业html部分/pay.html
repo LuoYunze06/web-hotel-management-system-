@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food & Beverage Management — Payment & Settlement</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            --page-bg: url("5219ca115f118432dd841827721a2edd.jpg");
+            min-height: 100vh;
+            margin: 0;
+            padding: 30px;
+            overflow-x: hidden;
+            color: #243044;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #edf4f7;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -18px;
+            z-index: -2;
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.42), rgba(201,228,236,0.24)),
+                var(--page-bg) center/cover no-repeat;
+            filter: blur(8px) saturate(1.08);
+            transform: scale(1.04);
+            will-change: transform;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 28% 12%, rgba(255,255,255,0.65), transparent 28%),
+                linear-gradient(rgba(20,45,68,0.16), rgba(255,255,255,0.42));
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.58);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 18px 44px rgba(18,47,70,0.18);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            animation: contentFade .7s ease both;
+        }
+
+        h2 {
+            position: relative;
+            display: table;
+            margin: 0 auto 10px;
+            color: #00579A;
+            text-align: center;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -7px;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #c8912f, #ffe6a8);
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform .28s ease;
+        }
+
+        h2:hover::after {
+            transform: scaleX(1);
+        }
+
+        .desc {
+            margin-bottom: 25px;
+            color: #333;
+            text-align: center;
+        }
+
+        .img-wrap {
+            display: none;
+        }
+
+        .img-wrap img {
+            width: 600px;
+            height: 220px;
+            object-fit: cover;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+
+        .bill,
+        .form-wrap {
+            width: 420px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.55);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.35);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+        }
+
+        .bill-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            opacity: 0;
+            transform: translateY(14px);
+            animation: orderFadeUp .58s ease forwards;
+        }
+
+        .bill-item:nth-child(2) {
+            animation-delay: .08s;
+        }
+
+        .bill-item:nth-child(3) {
+            animation-delay: .16s;
+        }
+
+        .bill-item:nth-child(4) {
+            animation-delay: .24s;
+        }
+
+        .total {
+            padding-top: 10px;
+            margin-top: 10px;
+            color: #dc3545;
+            font-weight: bold;
+            border-top: 1px solid rgba(255,255,255,0.55);
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        select {
+            width: 100%;
+            padding: 9px 10px;
+            border: 1px solid rgba(255,255,255,0.65);
+            border-radius: 4px;
+            outline: none;
+            background: rgba(255,255,255,0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+        }
+
+        select:focus {
+            border-color: rgba(200,145,47,0.9);
+            background: rgba(255,255,255,0.78);
+            box-shadow: 0 0 0 3px rgba(255,219,142,0.36);
+        }
+
+        .btn-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            position: relative;
+            min-height: 38px;
+            margin: 0;
+            padding: 8px 16px;
+            overflow: hidden;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            background: linear-gradient(135deg, #00579A, #0c75bd);
+            box-shadow: 0 8px 16px rgba(0,87,154,0.22);
+            cursor: pointer;
+            transition: transform .24s ease, box-shadow .24s ease;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: -45%;
+            left: -80%;
+            width: 42%;
+            height: 190%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.72), transparent);
+            transform: rotate(24deg);
+            transition: left .6s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 22px rgba(0,87,154,0.3);
+        }
+
+        button:hover::before {
+            left: 130%;
+        }
+
+        .tips {
+            margin-top: 25px;
+            padding: 12px;
+            color: #333;
+            border: 1px dashed rgba(255,255,255,0.65);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.35);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+        }
+
+        .bill:hover,
+        .form-wrap:hover,
+        .tips:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255,218,130,0.9);
+            box-shadow:
+                0 18px 38px rgba(23,48,68,0.18),
+                0 0 24px rgba(218,166,63,0.48);
+        }
+
+        @keyframes contentFade {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes orderFadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+
+        @media (max-width: 760px) {
+            body {
+                padding: 18px 14px;
+            }
+
+            .container {
+                padding: 18px;
+            }
+
+            .bill,
+            .form-wrap {
+                width: 100%;
+            }
+
+            .btn-box button {
+                flex: 1 1 130px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../../shared-ui.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Food & Beverage Management — Payment & Settlement</h2>
+        <p class="desc">Support multiple payment methods, automatic discounts, coupons, and invoice generation</p>
+
+        <div class="img-wrap">
+            <img src="5219ca115f118432dd841827721a2edd.jpg" alt="Payment & Settlement">
+        </div>
+
+        <div class="bill">
+            <div class="bill-item">
+                <span>Subtotal</span>
+                <span>¥198</span>
+            </div>
+
+            <div class="bill-item">
+                <span>Member Discount</span>
+                <span>-¥19.8</span>
+            </div>
+
+            <div class="bill-item total">
+                <span>Total Due</span>
+                <span>¥178.2</span>
+            </div>
+        </div>
+
+        <div class="form-wrap">
+            <div class="form-group">
+                <label for="payType">Payment Method</label>
+                <select id="payType">
+                    <option>Cash</option>
+                    <option>Credit Card</option>
+                    <option>WeChat Pay</option>
+                    <option>Alipay</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="discountType">Promotion</label>
+                <select id="discountType">
+                    <option>Member 10% Off</option>
+                    <option>¥10 Off ¥100+</option>
+                    <option>No Discount</option>
+                </select>
+            </div>
+
+            <div class="btn-box">
+                <button id="payBtn">Confirm Payment</button>
+                <button id="invoice">Generate Invoice</button>
+            </div>
+        </div>
+
+        <div class="tips">
+            <strong>Tips:</strong>
+            <p>1. System automatically calculates discounts and coupons</p>
+            <p>2. Electronic invoices supported, one-click generation</p>
+            <p>3. Promotions updated periodically, subject to system</p>
+        </div>
+    </div>
+    <script src="../小组作业js部分/pay.js"></script>
+<script src="../../../input-validation.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Management - Hotel Management System</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body data-hide-char-hint="true">
+    <main class="right">
+        <header class="right-top">
+            <h1>Staff Management</h1>
+            <div class="user">
+                <span>Welcome, Admin</span>
+                <a href="../interface/behind.html" class="out">Home</a>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+            <a class="nav-link active" href="staff.html">Staff Management</a>
+            <a class="nav-link" href="attendance.html">Attendance</a>
+            <a class="nav-link" href="inventory.html">Inventory</a>
+            <a class="nav-link" href="suppliers.html">Suppliers</a>
+            <a class="nav-link" href="purchase.html">Purchase Orders</a>
+        </nav>
+
+        <div class="box">
+            <div class="cards">
+                <div class="item">
+                    <div class="icon icon-blue">&#128100;</div>
+                    <div class="info">
+                        <span class="num">52</span>
+                        <span class="label">Total Staff</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-green">&#10004;</div>
+                    <div class="info">
+                        <span class="num">49</span>
+                        <span class="label">Active Staff</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-orange">&#128188;</div>
+                    <div class="info">
+                        <span class="num">6</span>
+                        <span class="label">Departments</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-red">&#10133;</div>
+                    <div class="info">
+                        <span class="num">3</span>
+                        <span class="label">New Hires This Month</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bar">
+                <div class="search">
+                    <input type="text">
+                    <button class="blue-btn">Search</button>
+                </div>
+                <button class="blue-btn">+ Add Staff</button>
+            </div>
+
+            <div class="card">
+                <div class="title">Staff List</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Position</th>
+                            <th>Join Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>EMP001</td>
+                            <td>Zhang San</td>
+                            <td>Front Desk</td>
+                            <td>Receptionist</td>
+                            <td>2024-01-15</td>
+                            <td>
+                                <span class="tag tag-green">Active</span>
+                            </td>
+                            <td>
+                                <button class="btn">Edit</button>
+                                <button class="btn btn-red">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EMP002</td>
+                            <td>Li Si</td>
+                            <td>Housekeeping</td>
+                            <td>Room Service</td>
+                            <td>2024-02-20</td>
+                            <td>
+                                <span class="tag tag-green">Active</span>
+                            </td>
+                            <td>
+                                <button class="btn">Edit</button>
+                                <button class="btn btn-red">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EMP003</td>
+                            <td>Wang Wu</td>
+                            <td>F&B</td>
+                            <td>Chef</td>
+                            <td>2023-11-05</td>
+                            <td>
+                                <span class="tag tag-green">Active</span>
+                            </td>
+                            <td>
+                                <button class="btn">Edit</button>
+                                <button class="btn btn-red">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EMP004</td>
+                            <td>Zhao Liu</td>
+                            <td>Security</td>
+                            <td>Security Guard</td>
+                            <td>2024-03-01</td>
+                            <td>
+                                <span class="tag tag-green">Active</span>
+                            </td>
+                            <td>
+                                <button class="btn">Edit</button>
+                                <button class="btn btn-red">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EMP005</td>
+                            <td>Sun Qi</td>
+                            <td>HR</td>
+                            <td>HR Specialist</td>
+                            <td>2023-08-12</td>
+                            <td>
+                                <span class="tag tag-yellow">Resigned</span>
+                            </td>
+                            <td>
+                                <button class="btn">Edit</button>
+                                <button class="btn btn-red">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="js/common.js"></script>
+<script src="../input-validation.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Management - Hotel Management System</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/inventory-page.css">
+</head>
+<body data-hide-char-hint="true">
+    <main class="right">
+        <header class="right-top">
+            <h1>Supplier Management</h1>
+            <div class="user">
+                <span>Welcome, Admin</span>
+                <a href="../interface/behind.html" class="out">Home</a>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" href="staff.html">Staff Management</a>
+            <a class="nav-link" href="attendance.html">Attendance</a>
+            <a class="nav-link" href="inventory.html">Inventory</a>
+            <a class="nav-link active" href="suppliers.html">Suppliers</a>
+            <a class="nav-link" href="purchase.html">Purchase Orders</a>
+        </nav>
+
+        <div class="box">
+            <div class="bar">
+                <div class="search">
+                    <input type="text">
+                    <button class="blue-btn">Search</button>
+                </div>
+                <button class="blue-btn">+ Add Supplier</button>
+            </div>
+
+            <div class="cards">
+                <div class="item">
+                    <div class="icon icon-blue">&#128188;</div>
+                    <div class="info">
+                        <span class="num">18</span>
+                        <span class="label">Total Suppliers</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-green">&#10004;</div>
+                    <div class="info">
+                        <span class="num">15</span>
+                        <span class="label">Active</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-orange">&#8987;</div>
+                    <div class="info">
+                        <span class="num">3</span>
+                        <span class="label">Pending Approval</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sup-list">
+                <div class="sup-card">
+                    <div class="sup-top">
+                        <div class="sup-logo">&#128188;</div>
+                        <div class="sup-info">
+                            <h4>Hotel Supplies Co.</h4>
+                            <span class="sup-code">SUP-001</span>
+                        </div>
+                        <span class="tag tag-green">Active</span>
+                    </div>
+                    <div class="sup-main">
+                        <div class="row">
+                            <span class="row-label">Contact:</span>
+                            <span class="row-val">Manager Wang</span>
+                        </div>
+                        <div class="row">
+                            <span class="row-label">Phone:</span>
+                            <span class="row-val">138-8888-6666</span>
+                        </div>
+                        <div class="row">
+                            <span class="row-label">Rating:</span>
+                            <span class="star">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                    </div>
+                    <div class="sup-btns">
+                        <button class="btn">Edit</button>
+                        <button class="btn">Details</button>
+                    </div>
+                </div>
+
+                <div class="sup-card">
+                    <div class="sup-top">
+                        <div class="sup-logo">&#128230;</div>
+                        <div class="sup-info">
+                            <h4>Cleaning Supplies Factory</h4>
+                            <span class="sup-code">SUP-002</span>
+                        </div>
+                        <span class="tag tag-green">Active</span>
+                    </div>
+                    <div class="sup-main">
+                        <div class="row">
+                            <span class="row-label">Contact:</span>
+                            <span class="row-val">Ms. Li</span>
+                        </div>
+                        <div class="row">
+                            <span class="row-label">Phone:</span>
+                            <span class="row-val">139-7777-5555</span>
+                        </div>
+                        <div class="row">
+                            <span class="row-label">Rating:</span>
+                            <span class="star">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                        </div>
+                    </div>
+                    <div class="sup-btns">
+                        <button class="btn">Edit</button>
+                        <button class="btn">Details</button>
+                    </div>
+                </div>
+
+                <div class="sup-card">
+                    <div class="sup-top">
+                        <div class="sup-logo">&#127807;</div>
+                        <div class="sup-info">
+                            <h4>Linen Co., Ltd.</h4>
+                            <span class="sup-code">SUP-003</span>
+                        </div>
+                        <span class="tag tag-yellow">Pending Approval</span>
+                    </div>
+                    <div class="sup-main">
+                        <div class="row">
+                            <span class="row-label">Contact:</span>
+                            <span class="row-val">Mr. Zhang</span>
+                        </div>
+                        <div class="row">
+                            <span class="row-label">Phone:</span>
+                            <span class="row-val">136-6666-8888</span>
+                        </div>
+                        <div class="row">
+                            <span class="row-label">Rating:</span>
+                            <span class="star">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                        </div>
+                    </div>
+                    <div class="sup-btns">
+                        <button class="btn">Edit</button>
+                        <button class="btn">Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/common.js"></script>
+<script src="../input-validation.js"></script>
+</body>
+</html>

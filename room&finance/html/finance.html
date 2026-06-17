@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Finance Income and Expense Entry</title>
+    <link rel="stylesheet" href="../common.css">
+</head>
+<body class="finance-background">
+    <header>
+        <div class="logo">Hotel Management System</div>
+        <div class="nav">
+            <a href="finance.html" class="active">Income & Expense Entry</a>
+            <a href="finance-query.html">Record Search</a>
+            <a href="finance-stat.html">Financial Statistics</a>
+            <a href="finance-refund.html">Refund Registration</a>
+            <a href="finance-cost.html">Daily Expenses</a>
+            <a href="finance-invoice.html">Invoice Management</a>
+            <a href="../../interface/behind.html">Home</a>
+        </div>
+    </header>
+    <div class="main">
+        <div class="panel">
+            <h2>Finance Income and Expense Entry</h2>
+            <div class="form-group">
+                <label>Add New Record:</label>
+                 <select id="type">
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+                 </select>
+            </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select id="category">
+                <option value="Room">Room Fee</option>
+                <option value="Supplies">Room Supplies</option>
+                <option value="Utility">Utility Bill</option>
+                <option value="Extra Service">Extra Service</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Account</label>
+            <input type="number" id="money" placeholder="Required field" data-no-char-limit="true" required>
+        </div>
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="Date">
+        </div>
+        <button onclick="AddFinance()">Add</button>
+        <div id="financeResult" style="margin-top: 12px;"></div>
+
+            <table id="financeTable">
+                <thead>
+                    <tr>
+                        <th>Record ID</th>
+                        <th>Type (Income/Expense)</th>
+                        <th>Category</th>
+                        <th>Amount ($)</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="financeBody">
+                    <tr>
+                        <td>FIN001</td>
+                        <td>Income</td>
+                        <td>Room Fee</td>
+                        <td>159.00</td>
+                        <td>2026-03-25</td>
+                    </tr>
+                    <tr>
+                        <td>FIN002</td>
+                        <td>Income</td>
+                        <td>Room Fee</td>
+                        <td>99.00</td>
+                        <td>2026-03-25</td>
+                    </tr>
+                    <tr>
+                        <td>FIN003</td>
+                        <td>Expense</td>
+                        <td>Room Supplies</td>
+                        <td>-250.00</td>
+                        <td>2026-03-24</td>
+                    </tr>
+                    <tr>
+                        <td>FIN004</td>
+                        <td>Expense</td>
+                        <td>Utility Bill</td>
+                        <td>-380.00</td>
+                        <td>2026-03-23</td>
+                    </tr>
+                    <tr>
+                        <td>FIN005</td>
+                        <td>Income</td>
+                        <td>Extra Service</td>
+                        <td>45.00</td>
+                        <td>2026-03-25</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="margin-top: 20px;">
+                <p><strong>Total Income: $<span id="financeTotalIncome">0.00</span></strong></p>
+                <p><strong>Total Expense: $<span id="financeTotalExpense">0.00</span></strong></p>
+                <p><strong>Profit: $<span id="financeProfit">0.00</span></strong></p>
+            </div>
+        </div>
+    </div>
+    <script src="../js/finance.js"></script>
+    <script src="../../input-validation.js"></script>
+</body>
+</html>

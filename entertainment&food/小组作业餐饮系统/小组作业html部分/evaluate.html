@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food & Beverage Management — Reviews & Feedback</title>
+    <style>
+        * {
+            box-sizing: border-box;/*Initialize code for layout convenience*/
+        }
+
+        html {
+            scroll-behavior: smooth;/*Smooth scrolling transition*/
+        }
+
+        body {
+            --page-bg: url("e56bb9f646dbeb9c72e01a9ba63ede38.jpg");/*Store background image URL in variable*/
+            min-height: 100vh;/*Minimum height equals viewport height*/
+            margin: 0;/*Outer margin*/
+            padding: 30px;/*Distance of all content from page edges*/
+            overflow-x: hidden;/*Hide horizontal scrollbar*/
+            color: #243044;/*Global text color*/
+            font-family: "Segoe UI", Arial, sans-serif;/*Global font*/
+            background: #edf4f7;/*Page base solid color background*/
+        }
+
+        body::before {/*Pseudo-element, generates a blank layer*/
+            content: "";
+            position: fixed;/*Fixed position*/
+            inset: -18px;/*Layer extends 18px in all directions, eliminates blur edge white border*/
+            z-index: -2;/*Layer level*/
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.42), rgba(201,228,236,0.24)),/*First layer background white gradient mask*/
+                var(--page-bg) center/cover no-repeat;/*Second layer calls the above image*/
+            filter: blur(8px) saturate(1.08);/*Filter effect*/
+            transform: scale(1.04);/*Scale layer 1.04x, combined with inset negative border*/
+            will-change: transform;/*Browser performance optimization*/
+        }
+
+        body::after {/*Second layer mask pseudo-element*/
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 28% 12%, rgba(255,255,255,0.65), transparent 28%),/*First layer radial circular gradient*/
+                linear-gradient(rgba(20,45,68,0.16), rgba(255,255,255,0.42));/*Second layer linear gradient from top to bottom*/
+            pointer-events: none;/*Don't intercept mouse clicks*/
+        }
+
+        .container {/*Review box main body*/
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 25px;/*Container internal padding*/
+            border: 1px solid rgba(255,255,255,0.58);/*Semi-transparent white thin border*/
+            border-radius: 10px;/*Box four rounded corners*/
+            background: rgba(255,255,255,0.18);/*Glass frosted core property*/
+            box-shadow: 0 18px 44px rgba(18,47,70,0.18);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            animation: contentFade .7s ease both;
+        }
+
+        h2 {
+            position: relative;
+            display: table;/*Make title width adapt to text length*/
+            margin: 0 auto 10px;
+            color: #00579A;
+            text-align: center;/*Text center alignment*/
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -7px;
+            height: 2px;
+            border-radius: 999px;/*Rounded line*/
+            background: linear-gradient(90deg, #c8912f, #ffe6a8);/*Horizontal gradient base color*/
+            transform: scaleX(0);/*Underline completely hidden on page load*/
+            transform-origin: center;/*Transform origin set to line center, animation expands from middle to both sides*/
+            transition: transform .28s ease;/*Transition animation, scale duration*/
+        }
+
+        h2:hover::after {/*Mouse hover animation*/
+            transform: scaleX(1);
+        }
+
+        .desc {/*Page description small text style*/
+            margin-bottom: 25px;
+            color: #666;
+            text-align: center;
+        }
+
+        .img-wrap {/*Image outer container*/
+            display: none;
+        }
+
+        .img-wrap img {/*Image style inside container*/
+            width: 600px;
+            height: 220px;
+            object-fit: cover;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+
+        .form-wrap {/*Review form frosted glass box style*/
+            width: 420px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.55);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.35);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.16);/*Soft shadow below box*/
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        .score label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .star {
+            color: #ffc107;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 9px 10px;
+            border: 1px solid rgba(255,255,255,0.65);
+            border-radius: 4px;
+            outline: none;
+            background: rgba(255,255,255,0.55);
+            box-shadow: none;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+        }
+
+        textarea:focus {
+            border-color: rgba(200,145,47,0.9);
+            background: rgba(255,255,255,0.78);
+            box-shadow: 0 0 0 3px rgba(255,219,142,0.36);
+        }
+
+        .btn-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            position: relative;
+            min-height: 38px;
+            margin: 0;
+            padding: 8px 16px;
+            overflow: hidden;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            background: linear-gradient(135deg, #00579A, #0c75bd);
+            box-shadow: 0 8px 16px rgba(0,87,154,0.22);
+            cursor: pointer;
+            transition: transform .24s ease, box-shadow .24s ease;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: -45%;
+            left: -80%;
+            width: 42%;
+            height: 190%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.72), transparent);
+            transform: rotate(24deg);
+            transition: left .6s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 22px rgba(0,87,154,0.3);
+        }
+
+        button:hover::before {
+            left: 130%;
+        }
+
+        .tips {
+            margin-top: 25px;
+            padding: 12px;
+            color: #555;
+            border: 1px dashed #999;
+            border-radius: 6px;
+            transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border: 1px solid #eee;
+            border-collapse: collapse;
+            transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+        }
+
+        .form-wrap:hover,
+        .tips:hover,
+        table:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255,218,130,0.9);
+            box-shadow:
+                0 18px 38px rgba(23,48,68,0.18),
+                0 0 24px rgba(218,166,63,0.48);
+        }
+
+        table tr {
+            opacity: 0;
+            transform: translateY(14px);
+            animation: orderFadeUp .58s ease forwards;
+        }
+
+        table tr:nth-child(2) {
+            animation-delay: .08s;
+        }
+
+        table tr:nth-child(3) {
+            animation-delay: .16s;
+        }
+
+        table tr:nth-child(4) {
+            animation-delay: .24s;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            color: #333;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        th {
+            color: #00579A;
+            background: #f0f7ff;
+        }
+
+        @keyframes contentFade {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes orderFadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+
+        @media (max-width: 760px) {
+            body {
+                padding: 18px 14px;
+            }
+
+            .container {
+                padding: 18px;
+            }
+
+            .form-wrap {
+                width: 100%;
+            }
+
+            .score label {
+                display: inline-block;
+                margin: 6px 10px 6px 0;
+            }
+
+            .btn-box button {
+                flex: 1 1 130px;
+            }
+
+            table {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            th,
+            td {
+                padding: 9px 10px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../../shared-ui.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Food & Beverage Management — Reviews & Feedback</h2>
+        <p class="desc">Collect customer reviews on dishes, service, and environment to continuously optimize experience</p><!--Helper text-->
+
+        <div class="img-wrap">
+            <img src="e56bb9f646dbeb9c72e01a9ba63ede38.jpg" alt="Reviews & Feedback">
+        </div>
+
+        <div class="form-wrap">
+            <div class="form-group score">
+                <label>Rating:</label>
+
+                <label>
+                    <input type="radio" name="score" value="5" checked>
+                    5 Stars
+                    <span class="star">★★★★★</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="score" value="4">
+                    4 Stars
+                    <span class="star">★★★★☆</span><!--Inline container tag-->
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Review Content</label>
+                <textarea maxlength="100" data-max-chars="100" placeholder="Please enter your review... (max 100 characters)"></textarea><!--Multi-line text input-->
+            </div>
+
+            <div class="btn-box">
+                <button id="submitEvalBtn">Submit Review</button>
+                <button id="showEvaluate">View Reviews</button>
+            </div>
+        </div>
+
+        <div class="tips">
+            <strong>Tips:</strong>
+            <p>1. Your review will help us improve service quality</p>
+            <p>2. Reviews are displayed in real-time, anonymous submission supported</p>
+            <p>3. Quality reviews may receive small gifts or coupons</p>
+        </div>
+    </div>
+    <script src="../小组作业js部分/evaluate.js"></script>
+<script src="../../../input-validation.js"></script>
+</body>
+</html>

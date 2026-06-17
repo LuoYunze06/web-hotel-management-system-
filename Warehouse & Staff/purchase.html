@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Orders - Hotel Management System</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/inventory-page.css">
+</head>
+<body data-hide-char-hint="true">
+    <main class="right">
+        <header class="right-top">
+            <h1>Purchase Orders</h1>
+            <div class="user">
+                <span>Welcome, Admin</span>
+                <a href="../interface/behind.html" class="out">Home</a>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" href="staff.html">Staff Management</a>
+            <a class="nav-link" href="attendance.html">Attendance</a>
+            <a class="nav-link" href="inventory.html">Inventory</a>
+            <a class="nav-link" href="suppliers.html">Suppliers</a>
+            <a class="nav-link active" href="purchase.html">Purchase Orders</a>
+        </nav>
+
+        <div class="box">
+            <div class="bar">
+                <div class="search">
+                    <input type="text">
+                    <button class="blue-btn">Search</button>
+                </div>
+                <button class="blue-btn">+ New Purchase Order</button>
+            </div>
+
+            <div class="cards">
+                <div class="item">
+                    <div class="icon icon-blue">&#128196;</div>
+                    <div class="info">
+                        <span class="num">28</span>
+                        <span class="label">Orders This Month</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-orange">&#36;</div>
+                    <div class="info">
+                        <span class="num">86,500</span>
+                        <span class="label">Purchase Total</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-green">&#10004;</div>
+                    <div class="info">
+                        <span class="num">22</span>
+                        <span class="label">Completed</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-purple">&#8987;</div>
+                    <div class="info">
+                        <span class="num">6</span>
+                        <span class="label">Processing</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trend-chart-container">
+                <div class="trend-chart-title">Purchase Amount Trend - Last 6 Months</div>
+                <svg class="trend-chart" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#3182ce;stop-opacity:0.3" />
+                            <stop offset="100%" style="stop-color:#3182ce;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                    <line class="trend-grid-line" x1="50" y1="30" x2="580" y2="30" />
+                    <line class="trend-grid-line" x1="50" y1="70" x2="580" y2="70" />
+                    <line class="trend-grid-line" x1="50" y1="110" x2="580" y2="110" />
+                    <line class="trend-grid-line" x1="50" y1="150" x2="580" y2="150" />
+                    <text class="trend-label" x="10" y="35">100k</text>
+                    <text class="trend-label" x="15" y="75">75k</text>
+                    <text class="trend-label" x="15" y="115">50k</text>
+                    <text class="trend-label" x="15" y="155">25k</text>
+                    <path class="trend-area" d="M 80,110 L 170,90 L 260,130 L 350,70 L 440,85 L 530,50 L 530,170 L 80,170 Z" />
+                    <path class="trend-line" d="M 80,110 L 170,90 L 260,130 L 350,70 L 440,85 L 530,50" />
+                    <circle class="trend-dot" cx="80" cy="110" r="4" />
+                    <circle class="trend-dot" cx="170" cy="90" r="4" />
+                    <circle class="trend-dot" cx="260" cy="130" r="4" />
+                    <circle class="trend-dot" cx="350" cy="70" r="4" />
+                    <circle class="trend-dot" cx="440" cy="85" r="4" />
+                    <circle class="trend-dot" cx="530" cy="50" r="4" />
+                    <text class="trend-value" x="75" y="105">52k</text>
+                    <text class="trend-value" x="165" y="85">61k</text>
+                    <text class="trend-value" x="255" y="125">45k</text>
+                    <text class="trend-value" x="345" y="65">73k</text>
+                    <text class="trend-value" x="435" y="80">68k</text>
+                    <text class="trend-value" x="525" y="45">87k</text>
+                    <text class="trend-label" x="70" y="190">Dec</text>
+                    <text class="trend-label" x="160" y="190">Jan</text>
+                    <text class="trend-label" x="250" y="190">Feb</text>
+                    <text class="trend-label" x="340" y="190">Mar</text>
+                    <text class="trend-label" x="430" y="190">Apr</text>
+                    <text class="trend-label" x="520" y="190">May</text>
+                </svg>
+            </div>
+
+            <div class="card">
+                <div class="title">Purchase Workflow</div>
+                <div class="flow">
+                    <div class="flow-item done">
+                        <div class="flow-num">1</div>
+                        <div class="flow-con">
+                            <span class="flow-title">Request Submitted</span>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">&#10145;</div>
+                    <div class="flow-item done">
+                        <div class="flow-num">2</div>
+                        <div class="flow-con">
+                            <span class="flow-title">Approval</span>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">&#10145;</div>
+                    <div class="flow-item done">
+                        <div class="flow-num">3</div>
+                        <div class="flow-con">
+                            <span class="flow-title">Order Created</span>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">&#10145;</div>
+                    <div class="flow-item now">
+                        <div class="flow-num">4</div>
+                        <div class="flow-con">
+                            <span class="flow-title">Shipping</span>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">&#10145;</div>
+                    <div class="flow-item">
+                        <div class="flow-num">5</div>
+                        <div class="flow-con">
+                            <span class="flow-title">Received Into Stock</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="title">Purchase Order List</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Order No.</th>
+                            <th>Supplier</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PO-2024-001</td>
+                            <td>Hotel Supplies Co.</td>
+                            <td>Room Sheets</td>
+                            <td>50 sets</td>
+                            <td>8,500</td>
+                            <td>2024-03-15</td>
+                            <td><span class="tag tag-green">Completed</span></td>
+                            <td><button class="btn">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>PO-2024-002</td>
+                            <td>Cleaning Supplies Factory</td>
+                            <td>Shampoo</td>
+                            <td>200 bottles</td>
+                            <td>4,800</td>
+                            <td>2024-03-16</td>
+                            <td><span class="tag tag-yellow">Shipping</span></td>
+                            <td><button class="btn">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>PO-2024-003</td>
+                            <td>Linen Co., Ltd.</td>
+                            <td>Towels and Bath Towels</td>
+                            <td>100 pcs</td>
+                            <td>6,200</td>
+                            <td>2024-03-17</td>
+                            <td><span class="tag tag-yellow">Under Review</span></td>
+                            <td><button class="btn">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="js/common.js"></script>
+<script src="../input-validation.js"></script>
+</body>
+</html>

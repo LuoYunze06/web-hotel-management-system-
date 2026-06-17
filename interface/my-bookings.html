@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings - Nanxin Grand Hotel</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/my-bookings.css">
+</head>
+<body data-hide-char-hint="true">
+    <header class="headdecorate">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="校徽.webp" alt="School Emblem" class="school-logo">
+                <h1>My Bookings</h1>
+            </div>
+            <nav class="navigator">
+                <span id="guestInfo" class="guest-info" style="display: none;"></span>
+                <a href="before.html" class="scene">Guest Portal</a>
+                <a href="#" id="logoutLink" class="scene" style="display: none;" onclick="guestOut()">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <div id="loginModal" class="modal">
+                <div class="modal-content">
+                    <h3>Reminder</h3>
+                    <p>Please login to view booking history!</p>
+                    <button class="btn btn-primary" onclick="goLogin()">Go to Login</button>
+                    <button class="btn btn-secondary" onclick="goBack()">Back</button>
+                </div>
+            </div>
+
+            <div id="content" style="display: none;">
+                <h2 class="section-title">My Booking History</h2>
+                
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="room">Room Bookings</button>
+                    <button class="tab-btn" data-tab="food">Dining Bookings</button>
+                </div>
+
+                <div class="tab-content active" id="roomTab">
+                    <div id="roomBookingsList">
+                        <div class="empty-state">
+                            <div class="empty-icon">🏨</div>
+                            <p>No room booking records</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="foodTab">
+                    <div id="foodBookingsList">
+                        <div class="empty-state">
+                            <div class="empty-icon">🍽️</div>
+                            <p>No dining booking records</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">© 2024 Nanxin Grand Hotel Management System</div>
+    </footer>
+
+    <script src="js/my-bookings.js"></script>
+<script src="../input-validation.js"></script>
+</body>
+</html>

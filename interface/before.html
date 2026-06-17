@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanxin Grand Hotel - Guest Portal</title>
+    <link rel="stylesheet" href="css/before.css">
+</head>
+<body data-hide-char-hint="true">
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="校徽.webp" alt="School Emblem">
+                <h1>Nanxin Grand Hotel Management System</h1>
+            </div>
+            <nav class="navigator">
+                <span id="guestInfo" class="guest-info" style="display: none;"></span>
+                <a href="my-bookings.html" id="myBookingsLink" style="display: none;" onclick="return chkLog(event)">My Bookings</a>
+                <a href="guest-login.html" id="loginLink" style="display: inline;">Login</a>
+                <a href="#" id="logoutLink" style="display: none;" onclick="out()">Logout</a>
+
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <h2 class="hero-title">Tailored Just for You</h2>
+        <p class="hero-subtitle">Make every journey a heartfelt experience</p>
+    </section>
+
+    <section class="booking-section">
+        <div class="booking-container">
+            <h2 class="section-title">Booking Services</h2>
+            <div class="booking-grid">
+                <a href="room-booking.html" class="booking-card" onclick="return chkLog(event)">
+                    <img src="房间.jpg" alt="Room Booking">
+                    <div class="booking-info">
+                        <div class="booking-icon">🏨</div>
+                        <h3 class="booking-title">Room Booking</h3>
+                        <p class="booking-desc">Choose your favorite room type and start a comfortable journey</p>
+                    </div>
+                </a>
+                <a href="food-booking.html" class="booking-card" onclick="return chkLog(event)">
+                    <img src="餐厅.jpg" alt="Dining Booking">
+                    <div class="booking-info">
+                        <div class="booking-icon">🍽️</div>
+                        <h3 class="booking-title">Dining Booking</h3>
+                        <p class="booking-desc">Savor exquisite cuisine and enjoy elegant moments</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <div class="gallery-card" style="background-image: url('小卡片1.jpg');">
+                <div class="card-overlay">
+                    <span class="card-label">About Hotel</span>
+                    <div class="card-content">
+                        <h3 class="card-title">About Nanxin Grand Hotel</h3>
+                        <p class="card-subtitle">Luxury facilities and attentive service</p>
+                        <a href="hotel-about.html" class="card-link">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-card" style="background-image: url('小卡片2.jpg');">
+                <div class="card-overlay">
+                    <span class="card-label">Facilities</span>
+                    <div class="card-content">
+                        <h3 class="card-title">Recreational Facilities</h3>
+                        <p class="card-subtitle">Swimming Pool, Gym, SPA</p>
+                        <a href="facilities.html" class="card-link">View Facilities →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-card" style="background-image: url('小卡片3.jpg');">
+                <div class="card-overlay">
+                    <span class="card-label">Teacher & Student</span>
+                    <div class="card-content">
+                        <h3 class="card-title">Teachers & Students<br>Warm moments of growth together</h3>
+                        <p class="card-subtitle">Experience the warmth between teachers and students</p>
+                        <a href="teacher-student.html" class="card-link">Explore More →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-card" style="background-image: url('小卡片4.jpg');">
+                <div class="card-overlay">
+                    <span class="card-label">Cuisine</span>
+                    <div class="card-content">
+                        <h3 class="card-title">Savor Cuisine</h3>
+                        <p class="card-subtitle">Exquisite dishes and elegant environment</p>
+                        <a href="food-dining.html" class="card-link">Explore More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        © 2024 Nanxin Grand Hotel Management System
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h3>Reminder</h3>
+            <p>Please login before making reservations!</p>
+            <button class="btn btn-primary" onclick="goLog()">Go to Login</button>
+            <button class="btn btn-secondary" onclick="clsLog()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="js/before.js"></script>
+<script src="../input-validation.js"></script>
+</body>
+</html>

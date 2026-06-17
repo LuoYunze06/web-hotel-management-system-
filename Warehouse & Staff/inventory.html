@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory - Hotel Management System</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/inventory-page.css">
+</head>
+<body data-hide-char-hint="true">
+    <main class="right">
+        <header class="right-top">
+            <h1>Inventory</h1>
+            <div class="user">
+                <span>Welcome, Admin</span>
+                <a href="../interface/behind.html" class="out">Home</a>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" href="staff.html">Staff Management</a>
+            <a class="nav-link" href="attendance.html">Attendance</a>
+            <a class="nav-link active" href="inventory.html">Inventory</a>
+            <a class="nav-link" href="suppliers.html">Suppliers</a>
+            <a class="nav-link" href="purchase.html">Purchase Orders</a>
+        </nav>
+
+        <div class="box">
+            <div class="bar">
+                <div class="search">
+                    <input type="text">
+                    <button class="blue-btn">Search</button>
+                </div>
+                <button class="blue-btn">+ Add Item</button>
+            </div>
+
+            <div class="tip">
+                <span class="tip-icon">&#9888;</span>
+                <span class="tip-text">Notice: <strong>3</strong> items are below safety stock. Please arrange purchasing.</span>
+                <button class="tip-btn">View Details &gt;</button>
+            </div>
+
+            <div class="cards">
+                <div class="item">
+                    <div class="icon icon-blue">&#128230;</div>
+                    <div class="info">
+                        <span class="num">1,567</span>
+                        <span class="label">Total Stock</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-green">&#10004;</div>
+                    <div class="info">
+                        <span class="num">32</span>
+                        <span class="label">Item Types</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-red">&#9888;</div>
+                    <div class="info">
+                        <span class="num">5</span>
+                        <span class="label">Low Stock</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="title">Inventory Details</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Stock</th>
+                            <th>Unit</th>
+                            <th>Safety Stock</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>Room Sheets</td>
+                            <td>Linen</td>
+                            <td>120</td>
+                            <td>sets</td>
+                            <td>50</td>
+                            <td><span class="tag tag-green">Normal</span></td>
+                            <td><button class="btn btn-green">Stock In</button>
+                                <button class="btn">Stock Out</button></td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Towels</td>
+                            <td>Linen</td>
+                            <td>85</td>
+                            <td>pcs</td>
+                            <td>30</td>
+                            <td><span class="tag tag-green">Normal</span></td>
+                            <td><button class="btn btn-green">Stock In</button>
+                                <button class="btn">Stock Out</button></td>
+                        </tr>
+                        <tr>
+                            <td>003</td>
+                            <td>Shampoo</td>
+                            <td>Toiletries</td>
+                            <td>15</td>
+                            <td>bottles</td>
+                            <td>50</td>
+                            <td><span class="tag tag-red">Low</span></td>
+                            <td><button class="btn btn-green">Stock In</button>
+                                <button class="btn">Stock Out</button></td>
+                        </tr>
+                        <tr>
+                            <td>004</td>
+                            <td>Toothbrush Sets</td>
+                            <td>Toiletries</td>
+                            <td>200</td>
+                            <td>sets</td>
+                            <td>80</td>
+                            <td><span class="tag tag-green">Normal</span></td>
+                            <td><button class="btn btn-green">Stock In</button>
+                                <button class="btn">Stock Out</button></td>
+                        </tr>
+                        <tr>
+                            <td>005</td>
+                            <td>Room Slippers</td>
+                            <td>Room Supplies</td>
+                            <td>8</td>
+                            <td>pairs</td>
+                            <td>30</td>
+                            <td><span class="tag tag-red">Low</span></td>
+                            <td><button class="btn btn-green">Stock In</button>
+                                <button class="btn">Stock Out</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="js/common.js"></script>
+<script src="../input-validation.js"></script>
+</body>
+</html>

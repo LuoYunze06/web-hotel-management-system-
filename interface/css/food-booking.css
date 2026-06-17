@@ -1,0 +1,21 @@
+.container {
+    max-width: 800px;
+}
+
+.booking-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    margin-bottom: 40px;
+}
+
+@media (max-width: 600px) {
+    .booking-section {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cleaning and Repair Service</title>
+    <link rel="stylesheet" href="../common.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Hotel Management System</div>
+        <div class="nav">
+            <a href="status.html">Room Status</a>
+            <a href="service.html" class="active">Room Service</a>
+            <a href="billing.html">Billing</a>
+            <a href="room-price.html">Room Pricing</a>
+            <a href="room-guest.html">Guest Information</a>
+            <a href="../../interface/behind.html">Home</a>
+        </div>
+    </header>
+    <div class="main">
+        <div class="panel">
+            <h2>Cleaning and Repair Service</h2>
+            <div class="form-group">
+                <label>Room Number</label>
+                <input type="text" id="serviceRoomNo" placeholder="Required field" data-no-char-limit="true" required>
+            </div>
+            <div class="form-group">
+                <label>Service Type</label>
+                <select id="serviceType">
+                    <option value="Sanitation">Sanitation Service</option>
+                    <option value="Repair">Repair Request</option>
+                </select>
+            </div>
+            <button class="btn-primary" onclick="addService()">Submit Service Request</button>
+            <table id="serviceTable" style="margin-top: 20px;">
+                <thead>
+                    <tr>
+                        <th>Room Number</th>
+                        <th>Service Type</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="serviceBody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="../js/room-service.js"></script>
+    <script src="../../input-validation.js"></script>
+</body>
+</html>

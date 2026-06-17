@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Hotel Management System</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/dashboard-page.css">
+</head>
+<body data-hide-char-hint="true">
+    <main class="right">
+        <header class="right-top">
+            <h1>Dashboard</h1>
+            <div class="user">
+                <span>Welcome, Admin</span>
+                <a href="../interface/behind.html" class="out">Home</a>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <a class="nav-link active" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" href="staff.html">Staff Management</a>
+            <a class="nav-link" href="attendance.html">Attendance</a>
+            <a class="nav-link" href="inventory.html">Inventory</a>
+            <a class="nav-link" href="suppliers.html">Suppliers</a>
+            <a class="nav-link" href="purchase.html">Purchase Orders</a>
+        </nav>
+
+        <div class="box">
+            <div class="cards">
+                <div class="item">
+                    <div class="icon icon-blue">&#127976;</div>
+                    <div class="info">
+                        <span class="num">128</span>
+                        <span class="label">Total Rooms</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-green">&#128100;</div>
+                    <div class="info">
+                        <span class="num">52</span>
+                        <span class="label">Total Staff</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-orange">&#128230;</div>
+                    <div class="info">
+                        <span class="num">1,567</span>
+                        <span class="label">Inventory Qty</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-red">&#9888;</div>
+                    <div class="info">
+                        <span class="num">5</span>
+                        <span class="label">Pending Alerts</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="title">Quick Access</div>
+                <div class="quick-grid">
+                    <a class="quick-link" href="staff.html">
+                        <span class="quick-icon">&#128100;</span>
+                        <span>Staff Profile</span>
+                    </a>
+                    <a class="quick-link" href="attendance.html">
+                        <span class="quick-icon">&#9200;</span>
+                        <span>Today's Attendance</span>
+                    </a>
+                    <a class="quick-link" href="inventory.html">
+                        <span class="quick-icon">&#128230;</span>
+                        <span>Inventory Management</span>
+                    </a>
+                    <a class="quick-link" href="suppliers.html">
+                        <span class="quick-icon">&#128188;</span>
+                        <span>Supplier Records</span>
+                    </a>
+                    <a class="quick-link" href="purchase.html">
+                        <span class="quick-icon">&#128196;</span>
+                        <span>Purchase Order</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="title">Today's Reminders</div>
+                <div class="notice-list">
+                    <div class="notice">
+                        <span><strong>Shampoo</strong> inventory below safety stock, need replenishment.</span>
+                        <span class="notice-time">09:20</span>
+                    </div>
+                    <div class="notice">
+                        <span><strong>Li Si</strong> late check-in today, please confirm.</span>
+                        <span class="notice-time">09:15</span>
+                    </div>
+                    <div class="notice">
+                        <span><strong>PO-2026-0201</strong> shipping, awaiting receipt.</span>
+                        <span class="notice-time">10:30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/common.js"></script>
+<script src="../input-validation.js"></script>
+</body>
+</html>

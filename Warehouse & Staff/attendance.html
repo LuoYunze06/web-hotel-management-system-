@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance - Hotel Management System</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/attendance-page.css">
+</head>
+<body data-hide-char-hint="true">
+    <main class="right">
+        <header class="right-top">
+            <h1>Attendance</h1>
+            <div class="user">
+                <span>Welcome, Admin</span>
+                <a href="../interface/behind.html" class="out">Home</a>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" href="staff.html">Staff Management</a>
+            <a class="nav-link active" href="attendance.html">Attendance</a>
+            <a class="nav-link" href="inventory.html">Inventory</a>
+            <a class="nav-link" href="suppliers.html">Suppliers</a>
+            <a class="nav-link" href="purchase.html">Purchase Orders</a>
+        </nav>
+
+        <div class="box">
+            <div class="bar">
+                <div class="search">
+                    <input type="text">
+                    <button class="blue-btn">Search</button>
+                </div>
+                <div class="bar-right">
+                    <button class="blue-btn">+ Correction Request</button>
+                    <button class="white-btn">Export Table</button>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="item">
+                    <div class="icon icon-blue">&#128100;</div>
+                    <div class="info">
+                        <span class="num">45</span>
+                        <span class="label">Today's Attendance</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-green">&#10004;</div>
+                    <div class="info">
+                        <span class="num">42</span>
+                        <span class="label">On-time Check-ins</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-orange">&#9200;</div>
+                    <div class="info">
+                        <span class="num">2</span>
+                        <span class="label">Late</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon icon-red">&#10006;</div>
+                    <div class="info">
+                        <span class="num">1</span>
+                        <span class="label">Absent</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="attendance-charts-row">
+                <div class="attendance-ring">
+                    <div class="ring-chart">
+                        <div class="ring-value">93%</div>
+                    </div>
+                    <div class="ring-info">
+                        <h3>Today's Attendance Rate</h3>
+                        <p>42 present / 45 total</p>
+                        <div class="ring-legend">
+                            <div class="legend-item">
+                                <span class="legend-dot green"></span>
+                                <span>Present 93%</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot gray"></span>
+                                <span>Absent 7%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="heatmap-container">
+                    <div class="heatmap-title">Weekly Attendance Heatmap</div>
+                    <div class="heatmap-grid">
+                        <div class="heatmap-label"></div>
+                        <div class="heatmap-day-header">Mon</div>
+                        <div class="heatmap-day-header">Tue</div>
+                        <div class="heatmap-day-header">Wed</div>
+                        <div class="heatmap-day-header">Thu</div>
+                        <div class="heatmap-day-header">Fri</div>
+                        <div class="heatmap-day-header">Sat</div>
+                        <div class="heatmap-day-header">Sun</div>
+
+                        <div class="heatmap-label">Zhang San</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell empty">-</div>
+                        <div class="heatmap-cell empty">-</div>
+
+                        <div class="heatmap-label">Li Si</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell late">L</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell empty">-</div>
+                        <div class="heatmap-cell empty">-</div>
+
+                        <div class="heatmap-label">Wang Wu</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell empty">-</div>
+                        <div class="heatmap-cell empty">-</div>
+
+                        <div class="heatmap-label">Zhao Liu</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell absent">✗</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell empty">-</div>
+                        <div class="heatmap-cell empty">-</div>
+
+                        <div class="heatmap-label">Sun Qi</div>
+                        <div class="heatmap-cell late">L</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell late">L</div>
+                        <div class="heatmap-cell normal">✓</div>
+                        <div class="heatmap-cell empty">-</div>
+                        <div class="heatmap-cell empty">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="title">Today's Clock Records</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Clock In</th>
+                            <th>Clock Out</th>
+                            <th>Duration</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>Zhang San</td>
+                            <td>Front Desk</td>
+                            <td>08:30</td>
+                            <td>17:45</td>
+                            <td>9h 15m</td>
+                            <td><span class="tag tag-green">Normal</span></td>
+                            <td><button class="btn">Details</button></td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Li Si</td>
+                            <td>Housekeeping</td>
+                            <td>09:15</td>
+                            <td>18:00</td>
+                            <td>8h 45m</td>
+                            <td><span class="tag tag-yellow">Late</span></td>
+                            <td><button class="btn">Details</button></td>
+                        </tr>
+                        <tr>
+                            <td>003</td>
+                            <td>Wang Wu</td>
+                            <td>F&B</td>
+                            <td>06:00</td>
+                            <td>14:30</td>
+                            <td>8h 30m</td>
+                            <td><span class="tag tag-green">Normal</span></td>
+                            <td><button class="btn">Details</button></td>
+                        </tr>
+                        <tr>
+                            <td>004</td>
+                            <td>Zhao Liu</td>
+                            <td>Security</td>
+                            <td>--:--</td>
+                            <td>--:--</td>
+                            <td>--</td>
+                            <td><span class="tag tag-red">Absent</span></td>
+                            <td><button class="btn">Details</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="js/common.js"></script>
+<script src="../input-validation.js"></script>
+</body>
+</html>
